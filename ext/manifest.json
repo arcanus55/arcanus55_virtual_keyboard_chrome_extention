@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Arcanus 55 On-Screen Virtual Keyboard",
 	"short_name": "Keyboard",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "You can put the A55 On-Screen Keyboard in your browser and use it on any bank, tax or shopping site.",
 	"author": "Scott C. Krause",
 	"icons": { "16":  "arcanus55/img/a55icon_16.png",

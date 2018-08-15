@@ -70,8 +70,8 @@ if( typeof a55_vk == "undefined" ){
     sMU += "        <\/aside>";
     sMU += "      <\/section>";
     sMU += "      <nav class=\"pnel-options__grd--bottom\">";
-    sMU += "        <a id=\"js__act--demo\" class=\"avk__pnel-link\" data-act-desc=\"A Quick Introduction\"";
-    sMU += "        >Demo<\/a>";
+    //sMU += "        <a id=\"js__act--demo\" class=\"avk__pnel-link\" data-act-desc=\"A Quick Introduction\"";
+    //sMU += "        >Demo<\/a>";
     sMU += "        <a id=\"js__act--macr\" class=\"avk__pnel-link\" data-act-desc=\"Custom Macro Recorder\"";
     sMU += "        >Macros<\/a>";
     sMU += "        <a id=\"js__act--spla\" class=\"avk__pnel-link\" data-act-desc=\"Product Information\"";
@@ -277,7 +277,7 @@ if( typeof a55_vk == "undefined" ){
             _eBanr.addEventListener( "click", function( ev ){  //  Banner click undock
                 if( _bDock ) _fDock();
             });
-            _eDemo.addEventListener( "click", function( ev ){  //  Run Demo
+            if( _eDemo ) _eDemo.addEventListener( "click", function( ev ){  //  Run Demo
                 a55_vk.demo();
             });
             _eMacr.addEventListener( "click", function( ev ){  //  Open Macro panel
@@ -323,6 +323,7 @@ if( typeof a55_vk == "undefined" ){
                 _eVKB.classList.add( "avk__dock" );
             }else{ _eVKB.classList.remove( "avk__dock" ); }
             _fDock_banr();
+            _fCheckHTTPS( window.location.href );
         };
         var _fDock_banr = function(){  //  Swap banner text when docked/undocked
             if( _bDock ){
@@ -592,7 +593,16 @@ if( typeof a55_vk == "undefined" ){
         }
     })( document, "js-avk--id" );
 
-    a55_vk.splash();
 
+    var doSplash_ext = function(){
+        var sLocSt = localStorage.getItem( "a55_vk_splash" );
+        if( !sLocSt ){
+            localStorage.setItem( "a55_vk_splash" , "Arcanus 55" );
+            a55_vk.splash();
+        }else{
+            a55_vk.dock();
+        }
+    }
+    doSplash_ext();
 }  //  End check for web version conflict
   console.log("%c Arcanus 55 Personal Security Solution ", "background: #665f50; color: #edba08; font-size: x-large");
