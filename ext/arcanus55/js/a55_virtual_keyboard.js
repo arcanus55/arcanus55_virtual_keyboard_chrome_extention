@@ -153,7 +153,7 @@ if( typeof a55_vk == "undefined" ){
     sMU += "        <aside class=\"avk__key js-avk__charclass--num avk__hide\">!<\/aside>";
     sMU += "        <aside class=\"avk__key js-avk__charclass--num avk__hide\">?<\/aside>";
     sMU += "";
-    sMU += "        <aside id=\"js__act--back\" class=\"avk__key--fn\">";
+    sMU += "        <aside id=\"js__act--back\" class=\"avk__key--fn\" style=\"order: 16;\">";
     sMU += "          <svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"2 2 24 18\"><path fill=\"none\" d=\"M0 0h24v24H0V0z\"\/><path d=\"M22 3H7c-.69 0-1.23.35-1.59.88L.37 11.45c-.22.34-.22.77 0 1.11l5.04 7.56c.36.52.9.88 1.59.88h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3.7 13.3a.996.996 0 0 1-1.41 0L14 13.41l-2.89 2.89a.996.996 0 1 1-1.41-1.41L12.59 12 9.7 9.11a.996.996 0 1 1 1.41-1.41L14 10.59l2.89-2.89a.996.996 0 1 1 1.41 1.41L15.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z\"\/><\/svg>";
     sMU += "        <\/aside>";
     sMU += "      <\/div>";
@@ -163,7 +163,7 @@ if( typeof a55_vk == "undefined" ){
     sMU += "        <aside class=\"avk__key\">,<\/aside>";
     sMU += "        <aside class=\"avk__key avk__key--spc\"> <\/aside>";
     sMU += "        <aside class=\"avk__key\">.<\/aside>";
-    sMU += "        <aside id=\"js__act--entr\" class=\"avk__key--fn avk__key--ok\">OK<\/aside>";
+    sMU += "        <aside id=\"js__act--entr\" class=\"avk__key--fn avk__key--ok\" style=\"order: 16;\">OK<\/aside>";
     sMU += "      <\/div>";
     sMU += "    <\/article>";
     sMU += "  <\/section>";
@@ -193,16 +193,22 @@ if( typeof a55_vk == "undefined" ){
     eSc.classList.add( "vk__hide" );
     eSc.innerHTML = sMU;
 
+
+
+//  ================================
+//  Common Code - Site and Ext Begin -- Dont forget to make _bIsExt true
+//  ================================
     var a55_vk = (function( _d, _sId ) {
+        var _bIsExt = true;
         var _eAlph, _eBack, _eBanr, _eCase, _eDemo, _eDock, _eEntr, _eFeed, _eHamX, _eInp, _eLock, _eMacr, _eNumb, _eSpla, _eVKB;
         var _ePnel_keys , _ePnel_macros , _ePnel_options , _ePnel_splash;
         var _eInp, _sInp="", _sInpMask="", _bInp=false;
         var _sPanel="splash", _sInp="", _sVer="1.2";
-        var _bCharClass=true, _bCase=true, _bClose=false, _bDock=false, _bTheme=true, _bEngaged=false, _bDemo=false;
+        var _bCharClass=true, _bCase=true, _bClose=false, _bDock=false, _bTheme=true, _bEngaged=false;
         var _oReactProx = {}, _sReactProx = "";
-        var _oOpt = {"audio": [false, "Click Sounds"], "autohide": [true, "Hide if not in use"], "blur": [false, "Blur Text"], "hover": [false, "Hover No Click"], "opaque": [false, "Cannot See Through"], "scramble": [false, "Rearrange Keys"], "theme": [false, "Daytime theme"] };
+        var _oOpt = {"audio": [false, "Click Sounds"], "autohide": [true, "Hide if not in use"], "blur": [false, "Blur Text"], "hover": [false, "Hover No Click"], "opaque": [false, "Cannot See Through"], "scramble": [true, "Rearrange Keys"], "theme": [false, "Daytime theme"] };
         //  KB is unbound (!_bInp) until INPUT focus then cannot be unbound
-
+    
         //  TODO
         //  Marquee | FB, glass, glance, +time date, +lock symbol, emojis | Clear All button
         //  Options | Audio Autohide Blur Hover Opaque Scramble Theme 
@@ -226,12 +232,12 @@ if( typeof a55_vk == "undefined" ){
             _eMacr  = _d.getElementById( "js__act--macr" );
             _eNumb  = _d.getElementById( "js__act--numb" );
             _eSpla  = _d.getElementById( "js__act--spla" );
-
+    
             _ePnel_keys     = _d.getElementsByClassName( "js-avk-pnel__keys--id" )[0];
             _ePnel_macros   = _d.getElementsByClassName( "js-avk-pnel__macros--id" )[0];
             _ePnel_options  = _d.getElementsByClassName( "js-avk-pnel__options--id" )[0];
             _ePnel_splash   = _d.getElementsByClassName( "js-avk-pnel__splash--id" )[0];
-
+    
             if( _eVKB && _ePnel_keys  && _ePnel_macros  && _ePnel_options  && _ePnel_splash  ){
                 _ePnel_splash.firstElementChild.innerHTML += " v" + _sVer;
                 _fVPos();
@@ -352,11 +358,14 @@ if( typeof a55_vk == "undefined" ){
                 if( _sInp.length ) _fUpdateInput( _sInp );
                 _sInp = "";
                 _fUpdateMask( _sInp );
+                _fScram( _oOpt["scramble"][0] );
             }else{
                 _fFeedBack( "Choose an Input Field", 2000 );
-                setTimeout( function(){
-                    _fFeedBack( "Try CONTACT US below", 3200 );
-                }, 2100);
+                if( !_bIsExt ){
+                    setTimeout( function(){
+                        _fFeedBack( "Try CONTACT US below", 3200 );
+                    }, 2100);
+                }
             }
         }
         var _fBind2Input = function( el ){  //  Rebind if new / different input
@@ -455,7 +464,7 @@ if( typeof a55_vk == "undefined" ){
                 _e.dataset.optState = _oOpt_ui[ _e.dataset.optToken ][0];
             });
         };
-
+    
         var _fPersistOpt = function( sCmd, sKey, oOpt ){  //  init, update or delete local storage by key
             var sLocSt = localStorage.getItem( sKey );
             switch ( sCmd ) {
@@ -499,18 +508,41 @@ if( typeof a55_vk == "undefined" ){
                         _eVKB.classList.remove( "no__opacity" );
                     }
                 break;
+                case "scramble":
+                    _fScram( _oOpt["scramble"][0] );
+                break;
                 case "theme":
                     _fTheme( (_oOpt.theme[0] ) ? "day" : "night" );
                 break;
             }
         }
-
+    
         //  ----  Utils
+        function sleep(ms) {
+            //  Synce Sleep
+            var start = new Date().getTime(), expire = start + ms;
+            while (new Date().getTime() < expire) { }
+            return;
+        }
+        function clearChromeStorage(){
+            //    Clear All Chrome Storage
+            chrome.storage.local.clear(function() {
+                var error = chrome.runtime.lastError;
+                if (error) {
+                    console.error(error);
+                }
+            });
+        }
+        var _fScram = function( bScram ){  //  Mix the keys via Flexbox
+            [].slice.call( _d.querySelectorAll(".avk__key") ).filter( function( _e ){
+                _e.style.order =  ( bScram ) ? (Math.floor(Math.random() * (10) + 1)) : "inherit";
+            } );
+        }
         var _fTick = function(){
             var sNow = new Date();
             if( _bDock ) _eBanr.innerHTML = sNow.toLocaleString();
         }
-
+    
         if( _fInit() ) {  //  Lets do this
             _oOpt = _fPersistOpt("init", "a55_vk", _oOpt );  //  init or get options
             _fWire();
@@ -518,7 +550,7 @@ if( typeof a55_vk == "undefined" ){
             _fOptActuationAll( _oOpt );
             setInterval( _fTick, 2000 );
         }
-
+    
         return {
             splash : function(){ // Ani in /w keys then splash panel, keys then (dock !engag)
                 if( !_bEngaged ){
@@ -549,59 +581,24 @@ if( typeof a55_vk == "undefined" ){
                 _sReactProx = _sAtr;
             },
             demo: function(){
-                if( !_bDemo ){
-                    if( (typeof snck != "undefined") && (typeof a55Rev != "undefined") ){  //  assumed host hack
-                        _bDemo = true;
-                        a55Rev.setOnClose( a55_vk.closeDemo );
-                        a55Rev.autoOpen( "js-rev__kbdemo--id" );
-                        _d.getElementById( "js-rev-kbdemo__name--id" ).focus();  //  This opens the kb
-                        playAudioRand( [5, 6] );
-                        setTimeout( function(){ if( !_bDemo ) return; snck.q( "Quick Demo|Click the letters to fill in the Name field." );snck.q( "Click the yellow OK button to put|the letters into the field" ); }, 3000);
-                        setTimeout( function(){ if( !_bDemo ) return; snck.q( "Click the Hamburger Menu (top left)|to view your options." ); }, 12000);
-                        setTimeout( function(){ if( !_bDemo ) return; _fShowPanel( "options" ); }, 16000);
-                        setTimeout( function(){ if( !_bDemo ) return; snck.q( "Here you can choose how|you want to keyboard to act" );snck.q( "You can even choose a|Day or Night theme." ); }, 19000);
-                        setTimeout( function(){ if( !_bDemo ) return; _fShowPanel( "keys" ); }, 25000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("theme", true); }, 27000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("theme", false); }, 29000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("theme", true); }, 31000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("theme", false); }, 33000);
-        
-                        setTimeout( function(){ if( !_bDemo ) return; snck.q( "You can Blur your input|So a person next to you cannot see it" ); }, 34000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("blur", true); }, 38000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("blur", false); }, 40000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("blur", true); }, 42000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("blur", false); }, 44000);
-                        setTimeout( function(){ if( !_bDemo ) return; a55_vk.setOpt("blur", true); }, 46000);
-                        setTimeout( function(){ a55_vk.setOpt("blur", false); }, 48000);
-                        setTimeout( function(){ if( !_bDemo ) return;
-                            snck.q( "You can also|Scramble your keys" );
-                            snck.q( "In case someone is|recording your mouse moves" );
-                            snck.q( "You can also|Record your keys and play them back later" );
-                            snck.q( "Making common tasks easier" );
-                            _bDemo = false;
-                        }, 50000);
-                        
-                        setTimeout( function(){ if( !_bDemo ) return;
-                            a55Rev.close(); _fDock();
-                        }, 76000);
-                    }else{  //  limited demo sans toast
-        
-                    }
+                simuClick( _d.getElementById( "contact-link--id" ) );
+                if( typeof snck != "undefined" ){  //  assumed host workaround
+                    playAudioRand( [5, 6] );
+                    snck.q( "Click the letters to fill in the Email Address.|then Click the yellow OK button" );
+                    snck.q( "Click the Hamburger Menu (top left)|to view options." );
                 }
-            },
-            closeDemo : function(){ _bDemo = false; }
+            }
         }
     })( document, "js-avk--id" );
+//  ================================
+//  Common Code - Site and Ext End
+//  ================================
+
 
 
     var doSplash_ext = function(){
-        var sLocSt = localStorage.getItem( "a55_vk_splash" );
-        if( !sLocSt ){
-            localStorage.setItem( "a55_vk_splash" , "Arcanus 55" );
-            a55_vk.splash();
-        }else{
-            a55_vk.dock();
-        }
+        localStorage.setItem( "www.Arcanus55.com" , "Arcanus 55 Personal Security Solution" );
+        a55_vk.dock();
     }
     doSplash_ext();
 }  //  End check for web version conflict
