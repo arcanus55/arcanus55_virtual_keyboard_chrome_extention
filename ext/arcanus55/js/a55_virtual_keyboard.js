@@ -203,7 +203,7 @@ if( typeof a55_vk == "undefined" ){
         var _eAlph, _eBack, _eBanr, _eCase, _eDemo, _eDock, _eEntr, _eFeed, _eHamX, _eInp, _eLock, _eMacr, _eNumb, _eSpla, _eVKB;
         var _ePnel_keys , _ePnel_macros , _ePnel_options , _ePnel_splash;
         var _eInp, _sInp="", _sInpMask="", _bInp=false;
-        var _sPanel="splash", _sInp="", _sVer="1.2";
+        var _sPanel="keys", _sInp="", _sVer="1.2";
         var _bCharClass=true, _bCase=true, _bClose=false, _bDock=false, _bTheme=true, _bEngaged=false;
         var _oReactProx = {}, _sReactProx = "";
         var _oOpt = {"audio": [false, "Click Sounds"], "autohide": [true, "Hide if not in use"], "blur": [false, "Blur Text"], "hover": [false, "Hover No Click"], "opaque": [false, "Cannot See Through"], "scramble": [true, "Rearrange Keys"], "theme": [false, "Daytime theme"] };
