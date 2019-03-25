@@ -9,4 +9,6 @@ Arcanus 55 Virtual Keyboard Chrome Extention
 [NPM](https://www.npmjs.com/~arcanus55) | 
 [Github](https://github.com/arcanus55) | 
 [Redit](https://www.reddit.com/user/arcanus55) | 
-[Medium](https://medium.com/@arcanus55)
+[Medium](https://medium.com/@arcanus55) | 
+[The Facebook](https://www.facebook.com/arcanus55/) | 
+[Gooble My Business](https://arcanus-55-inc.business.site/?m=true)
