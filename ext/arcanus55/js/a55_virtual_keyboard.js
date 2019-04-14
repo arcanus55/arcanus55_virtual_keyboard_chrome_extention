@@ -7,6 +7,7 @@
 |  (__)  |_| |_\ \__\    )_|  (__)  |_|  |___\   |__\       /__(      (__ 5 5
 */
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 let sMU = "";
 sMU += "  <section class=\"avk__grd--top\">";
 sMU += "    ";
@@ -215,7 +216,7 @@ class AVKOptions {
         })[0][2];
     }
 }
-let options = new AVKOptions([["audio", false, "Click Sounds"], ["autohide", false, "Hide if not in use"], ["blur", false, "Blur Text"], ["hover", false, "Hover No Click"], ["opaque", false, "Cannot See Through"], ["scramble", false, "Rearrange Keys"], ["theme", false, "Daytime theme"]]);
+exports.options = new AVKOptions([["audio", false, "Click Sounds"], ["autohide", false, "Hide if not in use"], ["blur", false, "Blur Text"], ["hover", false, "Hover No Click"], ["opaque", false, "Cannot See Through"], ["scramble", false, "Rearrange Keys"], ["theme", false, "Daytime theme"]]);
 var a55_vk = (function (_d, _sId) {
     var _bIsExt = true;
     var _eAlph, _eBack, _eBanr, _eCase, _eDemo, _eDock, _eEntr, _eFeed, _eHamX, _eInp, _eLock, _eMacr, _eNumb, _eSpla, _eVKB;
@@ -224,7 +225,7 @@ var a55_vk = (function (_d, _sId) {
     var _sPanel = "keys", _sInp = "", _sVer = "1.2.2";
     var _bCharClass = true, _bCase = true, _bClose = false, _bDock = false, _bTheme = true, _bEngaged = false;
     var _oReactProx = {}, _sReactProx = "";
-    options.setState("autohide", true); //  init to true
+    exports.options.setState("autohide", true); //  init to true
     //  KB is unbound (!_bInp) until INPUT focus then cannot be unbound
     //  TODO
     //  Marquee | FB, glass, glance, +time date, +lock symbol, emojis | Clear All button
@@ -281,7 +282,7 @@ var a55_vk = (function (_d, _sId) {
                     _bEngaged = false;
                     setTimeout(function () {
                         if (!_bEngaged) { //  if since kb or another INPUT not engaged
-                            if (options.getState("autohide"))
+                            if (exports.options.getState("autohide"))
                                 _fClose(); //_fDock();
                         }
                     }, 800);
@@ -316,11 +317,11 @@ var a55_vk = (function (_d, _sId) {
         });
         [].slice.call(_d.querySelectorAll("[data-opt-token]")).filter(function (_e) {
             _e.addEventListener("click", function (_ev) {
-                options.setState(this.dataset.optToken, ((this.dataset.optState == "true") ? false : true));
+                exports.options.setState(this.dataset.optToken, ((this.dataset.optState == "true") ? false : true));
                 this.dataset.optState = ((this.dataset.optState == "true") ? "false" : "true");
-                _fFeedBack(options.getFeedback(this.dataset.optToken) + " (" + ((this.dataset.optState == "true") ? "On" : "Off") + ")", 1600); //  Toggle DOM data attr
+                _fFeedBack(exports.options.getFeedback(this.dataset.optToken) + " (" + ((this.dataset.optState == "true") ? "On" : "Off") + ")", 1600); //  Toggle DOM data attr
                 _fOptActuation(this.dataset.optToken); //  Do it Now
-                _fPersistOpt("update", "a55_vk", options.aOpts);
+                _fPersistOpt("update", "a55_vk", exports.options.aOpts);
             });
         });
     };
@@ -385,7 +386,7 @@ var a55_vk = (function (_d, _sId) {
                 _fUpdateInput(_sInp);
             _sInp = "";
             _fUpdateMask(_sInp);
-            _fScram(options.getState("scramble"));
+            _fScram(exports.options.getState("scramble"));
         }
         else {
             _fFeedBack("Choose an Input Field", 2000);
@@ -500,7 +501,7 @@ var a55_vk = (function (_d, _sId) {
     // ----  Option persistence and actuation
     var _fOptSynceUI = function (_oOpt_ui) {
         [].slice.call(_d.querySelectorAll("[data-opt-token]")).filter(function (_e) {
-            _e.dataset.optState = String(options.getState(_e.dataset.optToken)); //_oOpt_ui[ _e.dataset.optToken ][0];
+            _e.dataset.optState = String(exports.options.getState(_e.dataset.optToken)); //_oOpt_ui[ _e.dataset.optToken ][0];
         });
     };
     var _fPersistOpt = function (sCmd, sKey, oOpt) {
@@ -539,12 +540,12 @@ var a55_vk = (function (_d, _sId) {
             case "blur":
                 [].slice.call(_d.querySelectorAll("input")).filter(function (_e) {
                     if (_e.type.toLowerCase() !== "checkbox") {
-                        _e.style.filter = ((options.getState("blur")) ? "blur(5px)" : "none");
+                        _e.style.filter = ((exports.options.getState("blur")) ? "blur(5px)" : "none");
                     }
                 });
                 break;
             case "opaque":
-                if (options.getState("opaque")) {
+                if (exports.options.getState("opaque")) {
                     _eVKB.classList.add("no__opacity");
                 }
                 else {
@@ -552,10 +553,10 @@ var a55_vk = (function (_d, _sId) {
                 }
                 break;
             case "scramble":
-                _fScram(options.getState("scramble"));
+                _fScram(exports.options.getState("scramble"));
                 break;
             case "theme":
-                _fTheme((options.getState("theme")) ? "day" : "night");
+                _fTheme((exports.options.getState("theme")) ? "day" : "night");
                 break;
         }
     };
@@ -586,10 +587,10 @@ var a55_vk = (function (_d, _sId) {
             _eBanr.innerHTML = sNow.toLocaleString();
     };
     if (_fInit()) { //  Lets do this
-        options.aOpts = _fPersistOpt("init", "a55_vk", options.aOpts); //  init or get options
+        exports.options.aOpts = _fPersistOpt("init", "a55_vk", exports.options.aOpts); //  init or get options
         _fWire();
-        _fOptSynceUI(options.aOpts);
-        _fOptActuationAll(options.aOpts);
+        _fOptSynceUI(exports.options.aOpts);
+        _fOptActuationAll(exports.options.aOpts);
         setInterval(_fTick, 2000);
     }
     return {
@@ -619,8 +620,8 @@ var a55_vk = (function (_d, _sId) {
         close: function () { _fClose(); },
         dock: function () { _fDock(); },
         toggleTheme: function (sShade) { return _fTheme(sShade); },
-        getOpt: function (sKey) { return options.getState(sKey); },
-        setOpt: function (sKey, bVal) { options.setState(sKey, bVal); _fOptActuation(sKey); },
+        getOpt: function (sKey) { return exports.options.getState(sKey); },
+        setOpt: function (sKey, bVal) { exports.options.setState(sKey, bVal); _fOptActuation(sKey); },
         /*ReactProx: function( _o, _sAtr:string ){
             _oReactProx = _o;
             _sReactProx = _sAtr;

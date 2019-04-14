@@ -1,7 +1,10 @@
 {
   "name": "arcanus55_virtual_keyboard_chrome_extention",
   "version": "2.0.0",
-  "description": "AVKB",
+  "description": "A55VKB",
+  "jest": {
+    "verbose": true
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest"

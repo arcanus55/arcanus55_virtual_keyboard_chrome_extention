@@ -220,7 +220,7 @@ class AVKOptions {
         })[0][2];
     }
 }
-let options = new AVKOptions([["audio", false, "Click Sounds"], ["autohide", false, "Hide if not in use"], ["blur", false, "Blur Text"], ["hover", false, "Hover No Click"], ["opaque", false, "Cannot See Through"], ["scramble", false, "Rearrange Keys"], ["theme", false, "Daytime theme"]]);
+export let options = new AVKOptions([["audio", false, "Click Sounds"], ["autohide", false, "Hide if not in use"], ["blur", false, "Blur Text"], ["hover", false, "Hover No Click"], ["opaque", false, "Cannot See Through"], ["scramble", false, "Rearrange Keys"], ["theme", false, "Daytime theme"]]);
 
     var a55_vk = (function( _d, _sId ) {
         var _bIsExt = true;
