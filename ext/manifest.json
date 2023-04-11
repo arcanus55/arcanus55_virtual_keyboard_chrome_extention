@@ -16,13 +16,6 @@
 	"permissions": [
 		"tabs",
 		"activeTab",
-		"notifications",
-		"bookmarks",
-		"unlimitedStorage",
-		"storage",
-		"contextMenus",
-		"clipboardRead",
-		"clipboardWrite",
 
 		"https://*/*/", "http://*/*/", "*://*/*"
 	],
